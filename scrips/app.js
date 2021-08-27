@@ -2,7 +2,8 @@
 const chatList = document.querySelector('.chat-list');
 const newChatForm = document.querySelector('.new-chat');
 const newUserName = document.querySelector('.new-name');
-const updateName = document.querySelector('.update-msg')
+const updateName = document.querySelector('.update-msg');
+const updateRooms = document.querySelector('.chat-rooms');
 
 
 // add new chat 
@@ -27,13 +28,27 @@ newUserName.addEventListener('submit', e => {
     newUserName.reset()
     // confirm the updated name and set timeout to hide the message
     updateName.innerHTML = `Your name was updated to ${newName}!`;
-    setTimeout(() => { updateName.innerHTML = ' ' }, 4000);
+    setTimeout(() => { updateName.innerHTML = '' }, 4000);
 })
+
+// update chatrooms 
+updateRooms.addEventListener('click', e => {
+    if (e.target.tagName === 'DIV') {
+        chatUI.clear();
+        console.log(e)
+        chatroom.updateRoom(e.target.getAttribute('id'));
+        chatroom.getChats(chat => chatUI.render(chat));
+    }
+});
+
+
+// local storage check for username 
+const username = localStorage.username ? localStorage.username : 'unknown';
 
 
 // class instances 
 const chatUI = new ChatUI(chatList);
-const chatroom = new Chatroom('general', 'mous');
+const chatroom = new Chatroom('general', username);
 
 // get chats and render 
 
