@@ -31,3 +31,19 @@ hr {
   font-size: 0.75em;
   font-weight: 100;
 }
+
+.logged-in-as {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 0.9em;
+  font-weight: 100;
+  color: #333;
+}
+
+.logged-in-as .username {
+  font-weight: 600;
+  color: #c96e1e;
+  font-style: italic;
+}
+
